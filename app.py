@@ -7,7 +7,7 @@ import pytesseract
 from pymongo import MongoClient
 
 app = Flask(__name__)
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+#pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -165,3 +165,4 @@ def history():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)
+
