@@ -1,5 +1,0 @@
-Flask==3.1.0
-Pillow==11.1.0
-pytesseract==0.3.13
-pymongo==4.15.1
-gunicorn==23.0.0
