@@ -13,7 +13,15 @@ A smart web application that scans food labels using OCR technology and provides
 
 ## 🚀 Live Demo
 
-Deployed on Render.com: [https://nutriscan.onrender.com](https://nutriscan.onrender.com)
+Test the app: https://khushi2025.pythonanywhere.com
+
+⚠️ Free Hosting Notice:
+
+Scanning takes 1-2 minutes (limited CPU on free tier)
+
+Please be patient - real OCR is working!
+
+For instant performance, run locally.
 
 ## 🛠️ Tech Stack
 
