@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan History - NutriScan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { margin: 0; padding: 20px; background: url('https://t4.ftcdn.net/jpg/02/34/24/15/360_F_234241545_L5VvQbW36l99rsvDCGATdSTuC8Zm8nPJ.jpg') no-repeat center center fixed; background-size: cover; min-height: 100vh; }
+        .container { background-color: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); max-width: 1000px; margin: 0 auto; }
+        h2 { text-align: center; color: #2f4858; }
+        .scan-item { background: #f8f9fa; padding: 15px; margin: 10px 0; border-radius: 10px; border-left: 5px solid #3498db; }
+        .scan-header { display: flex; justify-content: space-between; font-weight: bold; }
+        .nutrition-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 10px 0; }
+        .nutrition-item { background: white; padding: 8px; border-radius: 5px; text-align: center; }
+        .button { display: inline-block; padding: 10px 20px; background-color: #2ecc71; color: white; text-decoration: none; border-radius: 10px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📊 Scan History</h2>
+        <a href="/" class="button">🔍 New Scan</a>
+        
+        {% for scan in scans %}
+        <div class="scan-item">
+            <div class="scan-header">
+                <span>Scan on {{ scan.timestamp.strftime('%Y-%m-%d %H:%M') }}</span>
+                <span>{{ scan.emoji_feedback }}</span>
+            </div>
+            
+            {% if scan.nutrition_data %}
+            <div class="nutrition-grid">
+                {% for nutrient, value in scan.nutrition_data.items() %}
+                <div class="nutrition-item">
+                    <strong>{{ nutrient.replace('_', ' ').title() }}</strong><br>
+                    {{ value }}{% if nutrient == 'sodium' %}mg{% elif nutrient != 'calories' %}g{% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            <div>
+                <strong>Insights:</strong>
+                {% for insight in scan.insights %}
+                <span style="margin: 0 5px;">{{ insight }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
